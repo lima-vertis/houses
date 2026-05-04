@@ -1,0 +1,1333 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Houses Creative Lab | Mini Portfólio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --purple: #5b2482;
+        --peach: #f1a06d;
+        --yellow: #fbc844;
+        --dark: #12091b;
+        --text: #ffffff;
+        --muted: rgba(255, 255, 255, 0.72);
+        --glass: rgba(255, 255, 255, 0.1);
+        --border: rgba(255, 255, 255, 0.18);
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+        --radius-xl: 34px;
+        --radius-lg: 24px;
+        --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background: var(--dark);
+      }
+
+      body {
+        min-height: 100vh;
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            circle at 20% 0%,
+            rgba(251, 200, 68, 0.28),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 90% 18%,
+            rgba(241, 160, 109, 0.38),
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at 50% 80%,
+            rgba(91, 36, 130, 0.78),
+            transparent 38%
+          ),
+          linear-gradient(145deg, #160820 0%, #301147 46%, #0d0615 100%);
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: auto;
+        width: 52vw;
+        height: 52vw;
+        border-radius: 999px;
+        pointer-events: none;
+        filter: blur(30px);
+        opacity: 0.45;
+        z-index: -1;
+        animation: floatBlob 11s var(--ease) infinite alternate;
+      }
+
+      body::before {
+        top: -18vw;
+        left: -22vw;
+        background: linear-gradient(135deg, var(--yellow), var(--peach));
+      }
+
+      body::after {
+        right: -24vw;
+        bottom: -22vw;
+        background: linear-gradient(135deg, var(--purple), #e7358a);
+        animation-delay: -4s;
+      }
+
+      @keyframes floatBlob {
+        from {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        to {
+          transform: translate3d(8vw, 5vw, 0) scale(1.18);
+        }
+      }
+
+      .noise {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.06;
+        z-index: 50;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 34px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        display: grid;
+        align-items: center;
+        padding: 28px 0 52px;
+      }
+
+      .topbar {
+        position: absolute;
+        top: 22px;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        z-index: 4;
+      }
+
+      .logo {
+        width: clamp(178px, 24vw, 310px);
+        height: auto;
+        filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.32));
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 42px;
+        padding: 10px 15px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(16px);
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
+      .pill span {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: var(--yellow);
+        box-shadow: 0 0 22px var(--yellow);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: clamp(28px, 5vw, 72px);
+        align-items: center;
+        padding-top: 96px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        margin-bottom: 18px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: linear-gradient(
+          135deg,
+          rgba(251, 200, 68, 0.24),
+          rgba(241, 160, 109, 0.2)
+        );
+        border: 1px solid rgba(251, 200, 68, 0.24);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #fff4d1;
+        animation: revealUp 0.7s var(--ease) both;
+      }
+
+      h1 {
+        max-width: 760px;
+        font-size: clamp(46px, 10.4vw, 114px);
+        line-height: 0.85;
+        letter-spacing: -0.08em;
+        font-weight: 950;
+        text-wrap: balance;
+        animation: revealUp 0.8s var(--ease) 0.08s both;
+      }
+
+      h1 strong {
+        display: inline-block;
+        color: transparent;
+        background: linear-gradient(
+          115deg,
+          #fff 0%,
+          #fff 24%,
+          var(--yellow) 48%,
+          var(--peach) 72%,
+          #f03b8d 100%
+        );
+        background-size: 220% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        animation: shimmer 4s linear infinite;
+      }
+
+      @keyframes shimmer {
+        to {
+          background-position: 220% center;
+        }
+      }
+
+      .hero-copy {
+        max-width: 530px;
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: clamp(16px, 3.7vw, 20px);
+        line-height: 1.45;
+        animation: revealUp 0.8s var(--ease) 0.16s both;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+        animation: revealUp 0.8s var(--ease) 0.24s both;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0 20px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 900;
+        color: #220c32;
+        background: linear-gradient(135deg, var(--yellow), var(--peach));
+        box-shadow: 0 18px 38px rgba(241, 160, 109, 0.28);
+        transition:
+          transform 0.25s var(--ease),
+          box-shadow 0.25s var(--ease);
+      }
+
+      .button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 26px 48px rgba(241, 160, 109, 0.38);
+      }
+
+      .button.secondary {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.09);
+        border: 1px solid var(--border);
+        box-shadow: none;
+        backdrop-filter: blur(14px);
+      }
+
+      .hero-showcase {
+        position: relative;
+        min-height: 560px;
+        perspective: 1200px;
+        animation: revealScale 0.9s var(--ease) 0.18s both;
+      }
+
+      .phone-frame {
+        position: absolute;
+        inset: 50% auto auto 50%;
+        width: min(76vw, 360px);
+        aspect-ratio: 9 / 16;
+        border-radius: 46px;
+        transform: translate(-50%, -50%) rotate(-4deg);
+        background: #08040d;
+        padding: 12px;
+        box-shadow:
+          var(--shadow),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+        overflow: hidden;
+        z-index: 3;
+      }
+
+      .phone-frame::before {
+        content: "";
+        position: absolute;
+        top: 18px;
+        left: 50%;
+        width: 92px;
+        height: 24px;
+        border-radius: 999px;
+        background: #050307;
+        transform: translateX(-50%);
+        z-index: 5;
+      }
+
+      .phone-screen {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 36px;
+        background: #111;
+      }
+
+      .phone-screen img,
+      .phone-screen video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: scale(1.08);
+        transition:
+          opacity 0.8s var(--ease),
+          transform 5.5s linear;
+      }
+
+      .phone-screen .active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .float-card {
+        position: absolute;
+        width: 42%;
+        aspect-ratio: 4 / 5;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(14px);
+        animation: drift 5.5s var(--ease) infinite alternate;
+      }
+
+      .float-card img,
+      .float-card video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .float-card.one {
+        left: 0;
+        top: 14%;
+        transform: rotate(-10deg);
+      }
+      .float-card.two {
+        right: 0;
+        top: 2%;
+        transform: rotate(10deg);
+        animation-delay: -1.8s;
+      }
+      .float-card.three {
+        right: 1%;
+        bottom: 2%;
+        transform: rotate(7deg);
+        animation-delay: -3.2s;
+      }
+      .float-card.four {
+        left: 5%;
+        bottom: 8%;
+        transform: rotate(-7deg);
+        animation-delay: -4.4s;
+      }
+
+      @keyframes drift {
+        from {
+          translate: 0 0;
+        }
+        to {
+          translate: 0 -18px;
+        }
+      }
+
+      @keyframes revealUp {
+        from {
+          opacity: 0;
+          transform: translateY(26px);
+          filter: blur(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      @keyframes revealScale {
+        from {
+          opacity: 0;
+          transform: scale(0.92);
+          filter: blur(16px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+          filter: blur(0);
+        }
+      }
+
+      section {
+        padding: 34px 0 72px;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 22px;
+        margin-bottom: 22px;
+      }
+
+      .section-kicker {
+        color: #ffe8a8;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      h2 {
+        margin-top: 8px;
+        font-size: clamp(32px, 7vw, 72px);
+        line-height: 0.92;
+        letter-spacing: -0.06em;
+        text-wrap: balance;
+      }
+
+      .section-desc {
+        max-width: 390px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .marquee-wrap {
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+        padding: 10px 0 28px;
+      }
+
+      .marquee {
+        display: flex;
+        width: max-content;
+        gap: 16px;
+        animation: marquee 34s linear infinite;
+      }
+
+      .marquee:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .work-card {
+        position: relative;
+        width: min(72vw, 330px);
+        aspect-ratio: 4 / 5;
+        border-radius: 30px;
+        overflow: hidden;
+        flex: 0 0 auto;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--border);
+        box-shadow: 0 24px 55px rgba(0, 0, 0, 0.24);
+        transform: translateZ(0);
+      }
+
+      .work-card img,
+      .work-card video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition:
+          transform 0.7s var(--ease),
+          filter 0.7s var(--ease);
+      }
+
+      .work-card:hover img,
+      .work-card:hover video {
+        transform: scale(1.08);
+        filter: saturate(1.1) contrast(1.08);
+      }
+
+      .work-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.52),
+          transparent 48%
+        );
+        opacity: 0.8;
+      }
+
+      .tag {
+        position: absolute;
+        left: 14px;
+        bottom: 14px;
+        z-index: 2;
+        padding: 9px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 22px;
+      }
+
+      .feature {
+        min-height: 158px;
+        padding: 20px;
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(16px);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .feature::before {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        right: -42px;
+        top: -42px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--yellow), var(--peach));
+        opacity: 0.3;
+      }
+
+      .feature b {
+        display: block;
+        font-size: 24px;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+
+      .feature h3 {
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+
+      .feature p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .spotlight {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        align-items: stretch;
+        margin-top: 22px;
+      }
+
+      .spotlight-media {
+        min-height: 640px;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .spotlight-media img,
+      .spotlight-media video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .spotlight-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 640px;
+        padding: clamp(24px, 5vw, 46px);
+        border-radius: var(--radius-xl);
+        background:
+          linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.16),
+            rgba(255, 255, 255, 0.06)
+          ),
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(251, 200, 68, 0.34),
+            transparent 32%
+          );
+        border: 1px solid var(--border);
+        backdrop-filter: blur(20px);
+        box-shadow: var(--shadow);
+      }
+
+      .big-number {
+        font-size: clamp(86px, 18vw, 184px);
+        line-height: 0.76;
+        letter-spacing: -0.09em;
+        font-weight: 950;
+        color: transparent;
+        background: linear-gradient(
+          135deg,
+          var(--yellow),
+          var(--peach),
+          #ff4fa6
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+      }
+
+      .spotlight-copy h2 {
+        margin-top: 18px;
+      }
+      .spotlight-copy p {
+        margin-top: 18px;
+        color: var(--muted);
+        line-height: 1.55;
+        font-size: 17px;
+        max-width: 500px;
+      }
+
+      .cta {
+        margin: 34px 0 62px;
+        padding: clamp(28px, 7vw, 64px);
+        border-radius: 38px;
+        text-align: center;
+        background:
+          radial-gradient(
+            circle at 20% 0%,
+            rgba(251, 200, 68, 0.44),
+            transparent 32%
+          ),
+          linear-gradient(
+            135deg,
+            rgba(91, 36, 130, 0.9),
+            rgba(241, 160, 109, 0.76)
+          );
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .cta::before {
+        content: "";
+        position: absolute;
+        inset: -80px;
+        background: conic-gradient(
+          from 0deg,
+          transparent,
+          rgba(255, 255, 255, 0.22),
+          transparent,
+          rgba(251, 200, 68, 0.18),
+          transparent
+        );
+        animation: spin 8s linear infinite;
+        opacity: 0.45;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(1turn);
+        }
+      }
+
+      .cta > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta h2 {
+        max-width: 840px;
+        margin: 0 auto;
+      }
+
+      .cta p {
+        max-width: 560px;
+        margin: 18px auto 0;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.5;
+      }
+
+      .footer {
+        padding: 28px 0 40px;
+        color: rgba(255, 255, 255, 0.56);
+        text-align: center;
+        font-size: 13px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(34px);
+        filter: blur(10px);
+        transition:
+          opacity 0.85s var(--ease),
+          transform 0.85s var(--ease),
+          filter 0.85s var(--ease);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+
+      @media (max-width: 880px) {
+        .topbar {
+          position: relative;
+          top: auto;
+          margin-bottom: 24px;
+        }
+        .hero {
+          min-height: auto;
+          padding-top: 18px;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+          padding-top: 0;
+        }
+        .hero-showcase {
+          min-height: 520px;
+          order: -1;
+          margin-top: 8px;
+        }
+        .phone-frame {
+          width: min(74vw, 330px);
+        }
+        .float-card {
+          width: 35%;
+        }
+        .section-head {
+          display: block;
+        }
+        .section-desc {
+          margin-top: 14px;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+        .spotlight {
+          grid-template-columns: 1fr;
+        }
+        .spotlight-media,
+        .spotlight-copy {
+          min-height: auto;
+        }
+        .spotlight-media {
+          aspect-ratio: 4 / 5;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page {
+          width: min(100% - 24px, 1180px);
+        }
+        .topbar {
+          align-items: flex-start;
+        }
+        .pill {
+          font-size: 11px;
+          padding: 8px 10px;
+          min-height: 36px;
+        }
+        .logo {
+          width: 176px;
+        }
+        .hero-copy {
+          max-width: 94%;
+        }
+        .button {
+          width: 100%;
+        }
+        .hero-showcase {
+          min-height: 470px;
+        }
+        .phone-frame {
+          width: 74vw;
+          border-radius: 38px;
+          padding: 10px;
+        }
+        .phone-screen {
+          border-radius: 30px;
+        }
+        .float-card {
+          border-radius: 20px;
+        }
+        .float-card.one {
+          left: -5%;
+          top: 18%;
+        }
+        .float-card.two {
+          right: -5%;
+          top: 8%;
+        }
+        .float-card.three {
+          right: -4%;
+          bottom: 8%;
+        }
+        .float-card.four {
+          left: -4%;
+          bottom: 14%;
+        }
+        section {
+          padding-bottom: 52px;
+        }
+        .work-card {
+          width: 78vw;
+          border-radius: 24px;
+        }
+        .marquee {
+          gap: 12px;
+          animation-duration: 26s;
+        }
+        .cta {
+          border-radius: 28px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+
+      .media-open {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        padding: 18px;
+        background: rgba(7, 3, 12, 0.84);
+        backdrop-filter: blur(18px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.28s var(--ease);
+      }
+
+      .media-open.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .media-open__frame {
+        position: relative;
+        width: min(92vw, 520px);
+        max-height: 88svh;
+        aspect-ratio: 4 / 5;
+        border-radius: 30px;
+        overflow: hidden;
+        background: #09040d;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55);
+        transform: translateY(20px) scale(0.96);
+        transition: transform 0.32s var(--ease);
+      }
+
+      .media-open.active .media-open__frame {
+        transform: translateY(0) scale(1);
+      }
+
+      .media-open__frame img,
+      .media-open__frame video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .media-open__close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 3;
+        width: 42px;
+        height: 42px;
+        border: 0;
+        border-radius: 999px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(12px);
+        font-size: 26px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .client-overlay {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        z-index: 2;
+        padding: 8px 11px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.34);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0.02em;
+      }
+
+      @media (max-width: 560px) {
+        .marquee-wrap {
+          width: auto;
+          margin-left: 0;
+          transform: none;
+          overflow-x: auto;
+          padding: 8px 12px 26px;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+
+        .marquee-wrap::-webkit-scrollbar {
+          display: none;
+        }
+
+        .marquee {
+          animation: none;
+          width: max-content;
+        }
+
+        .work-card {
+          scroll-snap-align: center;
+          scroll-snap-stop: always;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="noise"></div>
+
+    <header class="hero page" id="topo">
+      <nav class="topbar">
+        <img class="logo" src="Logo Houses.png" alt="Houses Creative Lab" />
+        <div class="pill"><span></span> mini portfólio</div>
+      </nav>
+
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Conteúdo que chama atenção</div>
+          <h1>Social media com cara de <strong>campanha grande.</strong></h1>
+          <p class="hero-copy">
+            Uma amostra visual dos conteúdos criados pela Houses: peças
+            estáticas, vídeos, ideias criativas e narrativas pensadas para fazer
+            marcas serem vistas.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#portfolio">Ver conteúdos</a>
+            <a class="button secondary" href="#destaque">Explorar formato</a>
+          </div>
+        </div>
+
+        <div class="hero-showcase" aria-label="Prévia de conteúdos Houses">
+          <div class="float-card one">
+            <img src="Arte1.jpeg" alt="Post Vertis" />
+          </div>
+          <div class="float-card two">
+            <img src="Arte2.jpeg" alt="Post Vertis" />
+          </div>
+          <div class="float-card three">
+            <video src="Video1.mp4" muted autoplay loop playsinline></video>
+          </div>
+          <div class="float-card four">
+            <img src="Arte4.jpeg" alt="Post Vertis" />
+          </div>
+
+          <div class="phone-frame">
+            <div class="phone-screen" id="phoneScreen">
+              <img src="Arte3.jpeg" alt="Conteúdo em destaque" class="active" />
+              <img src="Arte5.jpeg" alt="Conteúdo em destaque" />
+              <img src="Arte6.jpeg" alt="Conteúdo em destaque" />
+              <video src="Video2.mp4" muted autoplay loop playsinline></video>
+              <video src="Video3.mp4" muted autoplay loop playsinline></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page reveal">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Houses Creative Lab</div>
+            <h2>Pouco texto. Muito impacto.</h2>
+          </div>
+          <p class="section-desc">
+            A página funciona como um demonstrativo rápido: o cliente entra,
+            entende a estética, sente o nível das entregas e vê o conteúdo em
+            movimento.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <b>01</b>
+            <h3>Posts com presença</h3>
+            <p>
+              Peças pensadas para parar o scroll e posicionar a marca com
+              personalidade.
+            </p>
+          </article>
+          <article class="feature">
+            <b>02</b>
+            <h3>Vídeos e movimento</h3>
+            <p>
+              Formatos dinâmicos para Reels, stories, campanhas e apresentações
+              rápidas.
+            </p>
+          </article>
+          <article class="feature">
+            <b>03</b>
+            <h3>Identidade visual</h3>
+            <p>
+              Direção criativa com cor, ritmo, conceito e consistência entre as
+              entregas.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="portfolio" class="reveal">
+        <div class="page section-head">
+          <div>
+            <div class="section-kicker">Galeria dinâmica</div>
+            <h2>Conteúdos em destaque.</h2>
+          </div>
+          <p class="section-desc">
+            Arraste, pause, toque e explore. No mobile, o visual é o
+            protagonista.
+          </p>
+        </div>
+
+        <div class="marquee-wrap">
+          <div class="marquee" id="marqueeTrack">
+            <article class="work-card" data-client="Cliente: Vertis">
+              <img src="Arte1.jpeg" alt="Arte Vertis 1" /><span
+                class="client-overlay"
+                >Cliente: Vertis</span
+              ><span class="tag">Post estático</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <img src="Arte2.jpeg" alt="Arte Vertis 2" /><span
+                class="client-overlay"
+                >Cliente: Vertis</span
+              ><span class="tag">Campanha</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <video src="Video1.mp4" muted autoplay loop playsinline></video
+              ><span class="client-overlay">Cliente: Vertis</span
+              ><span class="tag">Vídeo</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <img src="Arte3.jpeg" alt="Arte Vertis 3" /><span
+                class="client-overlay"
+                >Cliente: Vertis</span
+              ><span class="tag">Produto</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <img src="Arte4.jpeg" alt="Arte Vertis 4" /><span
+                class="client-overlay"
+                >Cliente: Vertis</span
+              ><span class="tag">Criativo temático</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <video src="Video2.mp4" muted autoplay loop playsinline></video
+              ><span class="client-overlay">Cliente: Vertis</span
+              ><span class="tag">Motion</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <img src="Arte5.jpeg" alt="Arte Vertis 5" /><span
+                class="client-overlay"
+                >Cliente: Vertis</span
+              ><span class="tag">Variação</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <img src="Arte6.jpeg" alt="Arte Vertis 6" /><span
+                class="client-overlay"
+                >Cliente: Vertis</span
+              ><span class="tag">Institucional</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <video src="Video3.mp4" muted autoplay loop playsinline></video
+              ><span class="client-overlay">Cliente: Vertis</span
+              ><span class="tag">Reels</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <img src="Arte7.jpeg" alt="Arte Vertis 7" /><span
+                class="client-overlay"
+                >Cliente: Vertis</span
+              ><span class="tag">Serviços</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <img src="Arte8.jpeg" alt="Arte Vertis 8" /><span
+                class="client-overlay"
+                >Cliente: Vertis</span
+              ><span class="tag">Agenda</span>
+            </article>
+            <article class="work-card" data-client="Cliente: Vertis">
+              <video src="Video4.mp4" muted autoplay loop playsinline></video
+              ><span class="client-overlay">Cliente: Vertis</span
+              ><span class="tag">Vídeo</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="destaque" class="page reveal">
+        <div class="spotlight">
+          <div class="spotlight-media" id="spotlightMedia">
+            <img src="Arte7.jpeg" alt="Conteúdo em destaque Houses" />
+          </div>
+          <div class="spotlight-copy">
+            <div>
+              <div class="big-number">8+</div>
+              <h2>formatos para vender uma ideia.</h2>
+              <p>
+                Do post comercial ao conteúdo criativo de oportunidade: o
+                objetivo é construir uma presença digital que pareça atual,
+                estratégica e visualmente forte.
+              </p>
+            </div>
+            <div class="hero-actions">
+              <a class="button" href="#topo">Voltar ao topo</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page reveal">
+        <div class="cta">
+          <div class="section-kicker">Pronto para apresentar</div>
+          <h2>
+            Uma vitrine rápida, bonita e feita para impressionar no celular.
+          </h2>
+          <p>
+            Substitua os arquivos da pasta, ajuste os textos e use como mini
+            portfólio para apresentar a Houses para novos clientes.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <div class="media-open" id="mediaOpen" aria-hidden="true">
+      <div class="media-open__frame" id="mediaOpenFrame">
+        <button
+          class="media-open__close"
+          id="mediaOpenClose"
+          aria-label="Fechar"
+        >
+          ×
+        </button>
+      </div>
+    </div>
+
+    <footer class="footer page">
+      Houses Creative Lab © Mini Portfólio de Conteúdos
+    </footer>
+
+    <script>
+      const phoneItems = document.querySelectorAll(
+        "#phoneScreen img, #phoneScreen video",
+      );
+      let phoneIndex = 0;
+
+      function nextPhoneItem() {
+        phoneItems[phoneIndex].classList.remove("active");
+        phoneIndex = (phoneIndex + 1) % phoneItems.length;
+        phoneItems[phoneIndex].classList.add("active");
+        if (phoneItems[phoneIndex].tagName === "VIDEO") {
+          phoneItems[phoneIndex].play().catch(() => {});
+        }
+      }
+
+      setInterval(nextPhoneItem, 3200);
+
+      const track = document.getElementById("marqueeTrack");
+      const isMobile = window.matchMedia("(max-width: 560px)").matches;
+      if (!isMobile) track.innerHTML += track.innerHTML;
+
+      const reveals = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      reveals.forEach((el) => observer.observe(el));
+
+      const spotlight = document.getElementById("spotlightMedia");
+      const spotlightItems = [
+        { type: "img", src: "Arte7.jpeg", alt: "Post Vertis" },
+        { type: "img", src: "Arte8.jpeg", alt: "Post Vertis" },
+        { type: "video", src: "Video4.mp4", alt: "Vídeo Houses" },
+        { type: "img", src: "Arte4.jpeg", alt: "Post Vertis" },
+      ];
+      let spotlightIndex = 0;
+
+      setInterval(() => {
+        spotlightIndex = (spotlightIndex + 1) % spotlightItems.length;
+        const item = spotlightItems[spotlightIndex];
+        spotlight.style.opacity = "0";
+        spotlight.style.transform = "scale(.985)";
+
+        setTimeout(() => {
+          if (item.type === "video") {
+            spotlight.innerHTML = `<video src="${item.src}" muted autoplay loop playsinline aria-label="${item.alt}"></video>`;
+          } else {
+            spotlight.innerHTML = `<img src="${item.src}" alt="${item.alt}">`;
+          }
+          spotlight.style.opacity = "1";
+          spotlight.style.transform = "scale(1)";
+        }, 280);
+      }, 4200);
+
+      spotlight.style.transition =
+        "opacity .45s cubic-bezier(.2,.8,.2,1), transform .45s cubic-bezier(.2,.8,.2,1)";
+
+      const modal = document.getElementById("mediaOpen");
+      const modalFrame = document.getElementById("mediaOpenFrame");
+      const closeModal = document.getElementById("mediaOpenClose");
+
+      function openMedia(card) {
+        const media = card.querySelector("img, video");
+        const isVideo = media.tagName === "VIDEO";
+        const src = media.getAttribute("src");
+        const alt =
+          media.getAttribute("alt") || card.dataset.client || "Conteúdo Houses";
+        const client = card.dataset.client || "Cliente: Vertis";
+
+        modalFrame.innerHTML = `
+        <button class="media-open__close" id="mediaOpenClose" aria-label="Fechar">×</button>
+        <span class="client-overlay">${client}</span>
+        ${
+          isVideo
+            ? `<video src="${src}" controls autoplay loop playsinline></video>`
+            : `<img src="${src}" alt="${alt}">`
+        }
+      `;
+
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        modalFrame
+          .querySelector(".media-open__close")
+          .addEventListener("click", hideMedia);
+      }
+
+      function hideMedia() {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll(".work-card").forEach((card) => {
+        card.addEventListener("click", () => openMedia(card));
+        card.addEventListener("mousemove", (event) => {
+          if (window.matchMedia("(max-width: 768px)").matches) return;
+          const rect = card.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
+          const y = ((event.clientY - rect.top) / rect.height - 0.5) * -10;
+          card.style.transform = `perspective(900px) rotateY(${x}deg) rotateX(${y}deg) translateY(-6px)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "";
+        });
+      });
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) hideMedia();
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") hideMedia();
+      });
+    </script>
+  </body>
+</html>
