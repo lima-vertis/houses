@@ -1090,7 +1090,6 @@
         }
       }
 
-
       /* Galeria final moderna */
       .final-gallery-section {
         padding-top: 18px;
@@ -1101,8 +1100,16 @@
         padding: clamp(18px, 4vw, 34px);
         border-radius: 38px;
         background:
-          radial-gradient(circle at 12% 8%, rgba(251, 200, 68, 0.22), transparent 34%),
-          radial-gradient(circle at 88% 12%, rgba(241, 160, 109, 0.24), transparent 30%),
+          radial-gradient(
+            circle at 12% 8%,
+            rgba(251, 200, 68, 0.22),
+            transparent 34%
+          ),
+          radial-gradient(
+            circle at 88% 12%,
+            rgba(241, 160, 109, 0.24),
+            transparent 30%
+          ),
           rgba(255, 255, 255, 0.075);
         border: 1px solid var(--border);
         box-shadow: var(--shadow);
@@ -1115,10 +1122,19 @@
         position: absolute;
         inset: -1px;
         border-radius: inherit;
-        background: linear-gradient(135deg, rgba(255,255,255,.22), transparent 32%, rgba(251,200,68,.18));
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.22),
+          transparent 32%,
+          rgba(251, 200, 68, 0.18)
+        );
         pointer-events: none;
-        mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
         padding: 1px;
         mask-composite: exclude;
         -webkit-mask-composite: xor;
@@ -1195,7 +1211,9 @@
         font-weight: 850;
         opacity: 0;
         transform: translateY(-6px);
-        transition: opacity .25s var(--ease), transform .25s var(--ease);
+        transition:
+          opacity 0.25s var(--ease),
+          transform 0.25s var(--ease);
       }
 
       .gallery-item:hover::before {
@@ -1314,6 +1332,57 @@
         }
       }
 
+      .cta-whatsapp {
+        margin-top: 40px;
+        padding: clamp(28px, 6vw, 60px);
+        border-radius: 36px;
+        text-align: center;
+
+        background:
+          radial-gradient(
+            circle at 20% 0%,
+            rgba(249, 115, 22, 0.4),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #0b1220, #1a1a1a);
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      }
+
+      .cta-whatsapp h2 {
+        font-size: clamp(28px, 5vw, 54px);
+        margin-bottom: 10px;
+      }
+
+      .cta-whatsapp p {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 24px;
+      }
+
+      .btn-whatsapp {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        padding: 14px 26px;
+        border-radius: 999px;
+
+        font-weight: 800;
+        text-decoration: none;
+        color: #fff;
+
+        background: linear-gradient(135deg, #25d366, #1ebe5d);
+        box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
+
+        transition: all 0.25s ease;
+      }
+
+      .btn-whatsapp:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 40px rgba(37, 211, 102, 0.5);
+      }
     </style>
   </head>
   <body>
@@ -1334,7 +1403,6 @@
           </p>
           <div class="hero-actions">
             <a class="button" href="#portfolio">Ver conteúdos</a>
-            <a class="button secondary" href="#destaque">Explorar formato</a>
           </div>
         </div>
 
@@ -1374,14 +1442,21 @@
     <main>
       <section class="page reveal">
         <div class="cta">
-          <div class="section-kicker">Pronto para apresentar</div>
-          <h2>
-            Uma vitrine rápida, bonita e feita para impressionar no celular.
-          </h2>
+          <div class="section-kicker">
+            presença online não é só existir — é se destacar.
+          </div>
           <p>
-            Substitua os arquivos da pasta, ajuste os textos e use como mini
-            portfólio para apresentar a Houses para novos clientes.
+            Nossa ideia é unir design, estratégia e criatividade para
+            transformar ideias em materiais que realmente chamam atenção — seja
+            para redes sociais, apresentações ou campanhas.
           </p>
+          <p>
+            Cada detalhe é pensado para destacar o seu negócio em um cenário
+            cada vez mais competitivo.
+          </p>
+
+          <br />
+          <h3>Criatividade com propósito</h3>
         </div>
       </section>
 
@@ -1410,7 +1485,6 @@
         </div>
       </section>
 
-
       <section id="portfolio" class="page reveal final-gallery-section">
         <div class="gallery-shell">
           <div class="gallery-topline">
@@ -1422,73 +1496,144 @@
           </div>
 
           <div class="gallery-grid" aria-label="Galeria de conteúdos Houses">
-            <button class="work-card gallery-item featured" data-client="Vertis • Arte 1" type="button">
+            <button
+              class="work-card gallery-item featured"
+              data-client="Vertis • Arte 1"
+              type="button"
+            >
               <img src="Arte1.jpeg" alt="Post Vertis Arte 1" loading="lazy" />
               <span class="tag">Arte 1</span>
             </button>
 
-            <button class="work-card gallery-item tall" data-client="Vertis • Arte 2" type="button">
+            <button
+              class="work-card gallery-item tall"
+              data-client="Vertis • Arte 2"
+              type="button"
+            >
               <img src="Arte2.jpeg" alt="Post Vertis Arte 2" loading="lazy" />
               <span class="tag">Arte 2</span>
             </button>
 
-            <button class="work-card gallery-item" data-client="Vertis • Arte 3" type="button">
+            <button
+              class="work-card gallery-item"
+              data-client="Vertis • Arte 3"
+              type="button"
+            >
               <img src="Arte3.jpeg" alt="Post Vertis Arte 3" loading="lazy" />
               <span class="tag">Arte 3</span>
             </button>
 
-            <button class="work-card gallery-item" data-client="Vertis • Vídeo 1" type="button">
-              <video src="Video1.mp4" muted loop playsinline preload="metadata"></video>
+            <button
+              class="work-card gallery-item"
+              data-client="Vertis • Vídeo 1"
+              type="button"
+            >
+              <video
+                src="Video1.mp4"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
               <span class="play-badge">▶</span>
               <span class="tag">Vídeo 1</span>
             </button>
 
-            <button class="work-card gallery-item wide" data-client="Vertis • Arte 4" type="button">
+            <button
+              class="work-card gallery-item wide"
+              data-client="Vertis • Arte 4"
+              type="button"
+            >
               <img src="Arte4.jpeg" alt="Post Vertis Arte 4" loading="lazy" />
               <span class="tag">Arte 4</span>
             </button>
 
-            <button class="work-card gallery-item" data-client="Vertis • Arte 5" type="button">
+            <button
+              class="work-card gallery-item"
+              data-client="Vertis • Arte 5"
+              type="button"
+            >
               <img src="Arte5.jpeg" alt="Post Vertis Arte 5" loading="lazy" />
               <span class="tag">Arte 5</span>
             </button>
 
-            <button class="work-card gallery-item" data-client="Vertis • Vídeo 2" type="button">
-              <video src="Video2.mp4" muted loop playsinline preload="metadata"></video>
+            <button
+              class="work-card gallery-item"
+              data-client="Vertis • Vídeo 2"
+              type="button"
+            >
+              <video
+                src="Video2.mp4"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
               <span class="play-badge">▶</span>
               <span class="tag">Vídeo 2</span>
             </button>
 
-            <button class="work-card gallery-item" data-client="Vertis • Arte 6" type="button">
+            <button
+              class="work-card gallery-item"
+              data-client="Vertis • Arte 6"
+              type="button"
+            >
               <img src="Arte6.jpeg" alt="Post Vertis Arte 6" loading="lazy" />
               <span class="tag">Arte 6</span>
             </button>
 
-            <button class="work-card gallery-item tall" data-client="Vertis • Arte 7" type="button">
+            <button
+              class="work-card gallery-item tall"
+              data-client="Vertis • Arte 7"
+              type="button"
+            >
               <img src="Arte7.jpeg" alt="Post Vertis Arte 7" loading="lazy" />
               <span class="tag">Arte 7</span>
             </button>
 
-            <button class="work-card gallery-item" data-client="Vertis • Vídeo 3" type="button">
-              <video src="Video3.mp4" muted loop playsinline preload="metadata"></video>
+            <button
+              class="work-card gallery-item"
+              data-client="Vertis • Vídeo 3"
+              type="button"
+            >
+              <video
+                src="Video3.mp4"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
               <span class="play-badge">▶</span>
               <span class="tag">Vídeo 3</span>
             </button>
 
-            <button class="work-card gallery-item" data-client="Vertis • Arte 8" type="button">
+            <button
+              class="work-card gallery-item"
+              data-client="Vertis • Arte 8"
+              type="button"
+            >
               <img src="Arte8.jpeg" alt="Post Vertis Arte 8" loading="lazy" />
               <span class="tag">Arte 8</span>
             </button>
 
-            <button class="work-card gallery-item wide" data-client="Vertis • Vídeo 4" type="button">
-              <video src="Video4.mp4" muted loop playsinline preload="metadata"></video>
+            <button
+              class="work-card gallery-item wide"
+              data-client="Vertis • Vídeo 4"
+              type="button"
+            >
+              <video
+                src="Video4.mp4"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
               <span class="play-badge">▶</span>
               <span class="tag">Vídeo 4</span>
             </button>
           </div>
         </div>
       </section>
-
     </main>
 
     <div class="media-open" id="mediaOpen" aria-hidden="true">
@@ -1502,6 +1647,26 @@
         </button>
       </div>
     </div>
+
+    <section class="page reveal">
+      <div class="cta-whatsapp">
+        <div class="cta-whatsapp-content">
+          <h2>Gostou do que viu?</h2>
+          <p>
+            Fale com a gente agora e leve esse nível de conteúdo para sua
+            clínica.
+          </p>
+
+          <a
+            href="https://wa.me/5511995110968"
+            target="_blank"
+            class="btn-whatsapp"
+          >
+            💬 Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer page">
       Houses Creative Lab © Mini Portfólio de Conteúdos
@@ -1614,8 +1779,6 @@
           card.style.transform = "";
         });
       });
-
-
 
       document.querySelectorAll(".gallery-item video").forEach((video) => {
         const card = video.closest(".gallery-item");
